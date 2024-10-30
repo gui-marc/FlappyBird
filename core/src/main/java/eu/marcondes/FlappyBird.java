@@ -12,6 +12,14 @@ public class FlappyBird extends ApplicationAdapter {
   private SpriteBatch batch;
   private Texture image;
 
+  public enum GameState {
+    MENU,
+    PLAYING,
+    GAME_OVER
+  }
+
+  private GameState gameState = GameState.MENU;
+
   public final boolean DEBUG = true;
 
   @Override
@@ -27,7 +35,7 @@ public class FlappyBird extends ApplicationAdapter {
     FlappyBirdEngine.getInstance().update(Gdx.graphics.getDeltaTime());
 
     if (DEBUG) {
-
+      Gdx.app.log("FPS: ", String.valueOf(Gdx.graphics.getFramesPerSecond()));
     }
 
     ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
