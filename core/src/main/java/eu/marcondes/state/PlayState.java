@@ -6,7 +6,9 @@ import eu.marcondes.FlappyBirdEngine;
 import eu.marcondes.ecs.EntityFactory;
 import eu.marcondes.ecs.systems.InfiniteBackgroundSystem;
 import eu.marcondes.ecs.systems.MovementSystem;
+import eu.marcondes.ecs.systems.PlayerAnimatorSystem;
 import eu.marcondes.ecs.systems.PlayerControllerSystem;
+import eu.marcondes.ecs.systems.PlayerRotatorSystem;
 import eu.marcondes.ecs.systems.SpriteRendererSystem;
 import eu.marcondes.managers.Assets;
 
@@ -18,6 +20,8 @@ public class PlayState extends GameState {
     System.out.println("Entering PlayState");
     engine = FlappyBirdEngine.getInstance().getEngine();
     engine.addSystem(new InfiniteBackgroundSystem());
+    engine.addSystem(new PlayerAnimatorSystem());
+    engine.addSystem(new PlayerRotatorSystem());
     engine.addSystem(new SpriteRendererSystem());
     engine.addSystem(new MovementSystem());
     engine.addSystem(new PlayerControllerSystem());
