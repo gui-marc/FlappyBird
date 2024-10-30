@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import eu.marcondes.ecs.components.InfiniteBackgroundComponent;
+import eu.marcondes.ecs.components.InfiniteScrollComponent;
 import eu.marcondes.ecs.components.PlayerComponent;
 import eu.marcondes.ecs.components.RigidBodyComponent;
 import eu.marcondes.ecs.components.SpriteComponent;
@@ -36,12 +36,30 @@ public class EntityFactory {
   public static Entity infiniteBackground(Engine engine) {
     Entity background = engine.createEntity();
 
-    InfiniteBackgroundComponent ibc = new InfiniteBackgroundComponent();
-    ibc.sprite = new Sprite(Assets.get(Assets.BACKGROUND_DAY_TEXTURE));
-    ibc.speed = 200;
+    InfiniteScrollComponent ibc = new InfiniteScrollComponent();
+    ibc.speed = 100;
     ibc.currentX = 0;
     background.add(ibc);
 
+    SpriteComponent sc = new SpriteComponent();
+    sc.sprite = new Sprite(Assets.get(Assets.BACKGROUND_DAY_TEXTURE));
+    background.add(sc);
+
     return background;
+  }
+
+  public static Entity infiniteForeground(Engine engine) {
+    Entity foreground = engine.createEntity();
+
+    InfiniteScrollComponent ifc = new InfiniteScrollComponent();
+    ifc.speed = 200;
+    ifc.currentX = 0;
+    foreground.add(ifc);
+
+    SpriteComponent sc = new SpriteComponent();
+    sc.sprite = new Sprite(Assets.get(Assets.BASE_TEXTURE));
+    foreground.add(sc);
+
+    return foreground;
   }
 }

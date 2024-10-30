@@ -28,11 +28,17 @@ public class Assets {
   public static final AssetDescriptor<Texture> YELLOW_BIRD_UPFLAP_TEXTURE =
       new AssetDescriptor<>("sprites/yellowbird-upflap.png", Texture.class);
 
+  public static final AssetDescriptor<Texture> BASE_TEXTURE =
+      new AssetDescriptor<>("sprites/base.png", Texture.class);
+
   public void load() {
     Texture.setAssetManager(manager);
 
     // BACKGROUND
     manager.load(BACKGROUND_DAY_TEXTURE);
+
+    // BASE
+    manager.load(BASE_TEXTURE);
 
     // YELLOW BIRD
     manager.load(YELLOW_BIRD_DOWNFLAP_TEXTURE);

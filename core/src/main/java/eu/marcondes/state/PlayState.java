@@ -4,13 +4,12 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import eu.marcondes.FlappyBirdEngine;
 import eu.marcondes.ecs.EntityFactory;
-import eu.marcondes.ecs.systems.InfiniteBackgroundSystem;
+import eu.marcondes.ecs.systems.InfiniteScrollSystem;
 import eu.marcondes.ecs.systems.MovementSystem;
 import eu.marcondes.ecs.systems.PlayerAnimatorSystem;
 import eu.marcondes.ecs.systems.PlayerControllerSystem;
 import eu.marcondes.ecs.systems.PlayerRotatorSystem;
 import eu.marcondes.ecs.systems.SpriteRendererSystem;
-import eu.marcondes.managers.Assets;
 
 public class PlayState extends GameState {
   private Engine engine;
@@ -19,7 +18,7 @@ public class PlayState extends GameState {
   public void enter() {
     System.out.println("Entering PlayState");
     engine = FlappyBirdEngine.getInstance().getEngine();
-    engine.addSystem(new InfiniteBackgroundSystem());
+    engine.addSystem(new InfiniteScrollSystem());
     engine.addSystem(new PlayerAnimatorSystem());
     engine.addSystem(new PlayerRotatorSystem());
     engine.addSystem(new SpriteRendererSystem());
@@ -27,6 +26,7 @@ public class PlayState extends GameState {
     engine.addSystem(new PlayerControllerSystem());
     engine.addEntity(EntityFactory.createPlayer(engine));
     engine.addEntity(EntityFactory.infiniteBackground(engine));
+    engine.addEntity(EntityFactory.infiniteForeground(engine));
   }
 
   @Override
