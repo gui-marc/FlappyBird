@@ -2,7 +2,6 @@ package eu.marcondes;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Gdx;
 
 public class FlappyBirdEngine {
   private static FlappyBirdEngine instance;
@@ -21,7 +20,6 @@ public class FlappyBirdEngine {
   }
 
   public void update(float deltaTime) {
-    Gdx.app.log("FlappyBirdEngine", "Updating engine");
     engine.update(deltaTime);
   }
 

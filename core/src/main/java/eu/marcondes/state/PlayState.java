@@ -1,0 +1,39 @@
+package eu.marcondes.state;
+
+import com.badlogic.ashley.core.Engine;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import eu.marcondes.FlappyBirdEngine;
+import eu.marcondes.ecs.EntityFactory;
+import eu.marcondes.ecs.systems.InfiniteBackgroundSystem;
+import eu.marcondes.ecs.systems.MovementSystem;
+import eu.marcondes.ecs.systems.PlayerControllerSystem;
+import eu.marcondes.ecs.systems.SpriteRendererSystem;
+import eu.marcondes.managers.Assets;
+
+public class PlayState extends GameState {
+  private Engine engine;
+
+  @Override
+  public void enter() {
+    System.out.println("Entering PlayState");
+    engine = FlappyBirdEngine.getInstance().getEngine();
+    engine.addSystem(new InfiniteBackgroundSystem());
+    engine.addSystem(new SpriteRendererSystem());
+    engine.addSystem(new MovementSystem());
+    engine.addSystem(new PlayerControllerSystem());
+    engine.addEntity(EntityFactory.createPlayer(engine));
+    engine.addEntity(EntityFactory.infiniteBackground(engine));
+  }
+
+  @Override
+  public void update(float deltaTime) {}
+
+  @Override
+  public void render(SpriteBatch batch, float deltaTime) {}
+
+  @Override
+  public void exit() {
+    engine.removeAllSystems();
+    engine.removeAllEntities();
+  }
+}

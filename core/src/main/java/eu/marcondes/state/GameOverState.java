@@ -2,7 +2,7 @@ package eu.marcondes.state;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MenuState extends GameState {
+public class GameOverState extends GameState {
   @Override
   public void enter() {}
 

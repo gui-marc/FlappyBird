@@ -1,11 +1,16 @@
 package eu.marcondes.utils;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public class StateMachine<T extends State> {
   private T currentState;
 
+  public StateMachine() {
+    currentState = null;
+  }
+
   public StateMachine(T initialState) {
     currentState = initialState;
-    currentState.enter();
   }
 
   public T getCurrentState() {
@@ -22,5 +27,9 @@ public class StateMachine<T extends State> {
 
   public void update(float deltaTime) {
     currentState.update(deltaTime);
+  }
+
+  public void render(SpriteBatch batch, float deltaTime) {
+    currentState.render(batch, deltaTime);
   }
 }
