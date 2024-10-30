@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import eu.marcondes.ecs.components.InfiniteScrollComponent;
 import eu.marcondes.ecs.components.PlayerComponent;
 import eu.marcondes.ecs.components.RigidBodyComponent;
@@ -20,15 +21,16 @@ public class EntityFactory {
     tc.y = 250;
     player.add(tc);
 
-    RigidBodyComponent rc = new RigidBodyComponent();
-    player.add(rc);
-
     SpriteComponent sc = new SpriteComponent();
     sc.sprite = new Sprite(Assets.get(Assets.YELLOW_BIRD_MIDFLAP_TEXTURE));
     player.add(sc);
 
     PlayerComponent pc = new PlayerComponent();
     player.add(pc);
+
+    RigidBodyComponent rc = new RigidBodyComponent();
+    rc.collisionShape = new Rectangle(sc.sprite.getBoundingRectangle());
+    player.add(rc);
 
     return player;
   }
