@@ -8,6 +8,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import eu.marcondes.ecs.components.PlayerComponent;
 import eu.marcondes.ecs.components.RigidBodyComponent;
+import eu.marcondes.managers.Assets;
+import eu.marcondes.managers.AudioPlayer;
 
 public class PlayerControllerSystem extends IteratingSystem {
   public final float JUMP_VELOCITY = 400;
@@ -25,6 +27,8 @@ public class PlayerControllerSystem extends IteratingSystem {
 
     if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
       rigidBody.velocity.y = JUMP_VELOCITY;
+      AudioPlayer.getInstance()
+          .playSound(Assets.WING_SOUND, 0.1f, (float) (Math.random() * 0.6f + 1f));
     }
   }
 }

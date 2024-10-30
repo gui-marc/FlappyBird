@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import eu.marcondes.ecs.components.RigidBodyComponent;
 import eu.marcondes.ecs.components.TransformComponent;
+import eu.marcondes.managers.Assets;
 
 public class MovementSystem extends IteratingSystem {
   public static float GRAVITY = -980f;
@@ -26,5 +27,10 @@ public class MovementSystem extends IteratingSystem {
 
     transform.x += rigidBody.velocity.x * deltaTime;
     transform.y += rigidBody.velocity.y * deltaTime;
+
+    if (transform.y < Assets.get(Assets.BASE_TEXTURE).getHeight()) {
+      transform.y = Assets.get(Assets.BASE_TEXTURE).getHeight();
+      rigidBody.velocity.y = 0;
+    }
   }
 }

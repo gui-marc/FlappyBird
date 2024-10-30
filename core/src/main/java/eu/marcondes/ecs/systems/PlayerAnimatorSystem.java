@@ -24,9 +24,9 @@ public class PlayerAnimatorSystem extends IteratingSystem {
     RigidBodyComponent rigidBody = rm.get(entity);
     SpriteComponent sprite = sm.get(entity);
 
-    if (rigidBody.velocity.y > 0) {
+    if (rigidBody.velocity.y > 15f) {
       sprite.sprite = new Sprite(Assets.get(Assets.YELLOW_BIRD_DOWNFLAP_TEXTURE));
-    } else if (rigidBody.velocity.y < 0) {
+    } else if (rigidBody.velocity.y < 15f) {
       sprite.sprite = new Sprite(Assets.get(Assets.YELLOW_BIRD_UPFLAP_TEXTURE));
     } else {
       sprite.sprite = new Sprite(Assets.get(Assets.YELLOW_BIRD_MIDFLAP_TEXTURE));

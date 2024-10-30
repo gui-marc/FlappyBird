@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import eu.marcondes.ecs.components.InfiniteScrollComponent;
 import eu.marcondes.ecs.components.PlayerComponent;
@@ -29,7 +30,7 @@ public class EntityFactory {
     player.add(pc);
 
     RigidBodyComponent rc = new RigidBodyComponent();
-    rc.collisionShape = new Rectangle(sc.sprite.getBoundingRectangle());
+    rc.collisionShape = new Circle(sc.sprite.getWidth() / 2f, sc.sprite.getHeight() / 2f, 10);
     player.add(rc);
 
     return player;
