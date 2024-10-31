@@ -30,8 +30,8 @@ public class DebugCollisionSystem extends IteratingSystem {
     RigidBodyComponent rc = rbm.get(entity);
     TransformComponent tc = tm.get(entity);
 
-    shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
     // Draw collision shape
+    shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
     shapeRenderer.setColor(Color.GREEN);
     if (rc.collisionShape instanceof com.badlogic.gdx.math.Rectangle rect) {
       shapeRenderer.rotate(0, 0, 0, tc.rotation);

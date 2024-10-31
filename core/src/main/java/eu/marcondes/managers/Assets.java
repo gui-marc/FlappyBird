@@ -32,6 +32,9 @@ public class Assets {
   public static final AssetDescriptor<Texture> BASE_TEXTURE =
       new AssetDescriptor<>("sprites/base.png", Texture.class);
 
+  public static final AssetDescriptor<Texture> PIPE_GREEN_TEXTURE =
+      new AssetDescriptor<>("sprites/pipe-green.png", Texture.class);
+
   public static final AssetDescriptor<Sound> WING_SOUND =
       new AssetDescriptor<>("audio/wing.ogg", Sound.class);
 
@@ -55,6 +58,9 @@ public class Assets {
 
     // BASE
     manager.load(BASE_TEXTURE);
+
+    // PIPES
+    manager.load(PIPE_GREEN_TEXTURE);
 
     // YELLOW BIRD
     manager.load(YELLOW_BIRD_DOWNFLAP_TEXTURE);
